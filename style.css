@@ -1,46 +1,47 @@
 :root {
   margin: 0;
   font-family: Arial, sans-serif;
+}
+
+* {
   box-sizing: border-box;
 }
 
 .people {
   display: grid;
-  grid-template: repeat(auto-fill, 231px)/repeat(auto-fill, 200px);
+  grid-template: repeat(auto-fill, 280px)/repeat(auto-fill, 220px);
   justify-content: center;
-  gap: 30px 40px;
+  gap: 5px 30px;
   margin: 30px 35px;
+  overflow: visible;
 }
 
 .person {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 200px;
-  height: 231px;
-  transition: all 1s;
+  width: 220px;
+  height: 280px;
+  transition: transform 1s 0.2s;
+  padding: 10px 10px;
 }
-
-.photo {
+.person .photo {
   height: 200px;
   width: 200px;
 }
-
-.photo > img {
-  display: inline-block;
+.person .photo img {
+  display: block;
   border-radius: 50%;
   width: inherit;
-  transition: border-radius 1s;
+  transition: border-radius 1s 0.3s;
   position: relative;
 }
-
-.photo > .rank {
+.person .photo .rank {
   display: inline-block;
   position: relative;
   top: -116px;
   left: 158px;
   width: 32px;
-  height: 32px;
   background-color: #fff;
   border-radius: 50%;
   font-size: 16px;
@@ -49,40 +50,35 @@
   text-align: center;
   line-height: 32px;
 }
-
-.details {
+.person .details {
   display: inline-block;
-  transition: 1s;
   text-align: center;
 }
-
-.name {
-  display: inline-block;
+.person .name {
+  display: block;
   font-size: 20px;
-  margin-top: 8px;
+  margin: 8px 0;
   line-height: 23px;
   color: #2F4F4F;
 }
-
-.extra {
+.person .extra {
   display: none;
-  transition: display 1s;
   font-size: 16px;
   line-height: 19px;
-  margin-top: 8px;
+  justify-self: center;
 }
 
 .person:hover {
   z-index: 1;
   background: #eee;
-  transform: scale(1.3) translate(-10px, 20px);
-  padding: 25px 12px;
+  transform: scale(1.3) translateY(15px);
+  transform-origin: center;
 }
 .person:hover img {
   border-radius: 10%;
 }
 .person:hover .extra {
-  display: block;
+  display: inline-block;
 }
 
 .pay:before {
@@ -93,7 +89,7 @@
   content: "M";
 }
 
-@media (max-width: 750px) {
+@media (min-width: 500px) {
   .people {
     grid-template-columns: repeat(2, 200px);
   }
